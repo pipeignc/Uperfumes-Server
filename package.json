@@ -8,7 +8,11 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
-    "test": "node test/e2e.js"
+    "test": "node test/e2e.js",
+    "python:train": ".venv/bin/python -m python_service.imperative --csv python_service/data/DATASET_PROTOTIPO.csv",
+    "python:dev": ".venv/bin/python -m uvicorn python_service.app:app --host 127.0.0.1 --port 8000",
+    "test:python": ".venv/bin/python -m unittest discover -s python_tests -v",
+    "test:python-ui": "node --test integration/python-features.test.cjs"
   },
   "engines": {
     "node": ">=18"

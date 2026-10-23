@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tu asesor de fragancias · UPerfumes</title>
+  <link rel="stylesheet" href="static/style.css">
+  <script src="static/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a href="./" class="brand">U<span>PERFUMES</span></a><span class="eyebrow">EL ARTE DE ENCONTRAR TU AROMA</span></header>
+  <main>
+    <section class="hero">
+      <div><span class="eyebrow">UN PERFUME. MUCHAS POSIBILIDADES.</span><h1>Tu próximo aroma<br>empieza <em>aquí.</em></h1><p>Descubre fragancias según tu estilo, explora precios y resuelve tus dudas con tu asesor local.</p></div>
+      <aside class="rate-card"><label for="rate">Tipo de cambio referencial</label><div class="rate-row"><span>1 USD =</span><input id="rate" type="number" min="0.0001" max="100000" step="0.0001" value="950" required><span>CLP</span></div><small>950 es una tasa de ejemplo editable, no una cotización actual. Los precios del dataset son referenciales y no confirman stock.</small></aside>
+    </section>
+    <p id="service-status" class="status" role="status">Conectando con el asesor…</p>
+    <nav class="tabs" aria-label="Herramientas de asesoría">
+      <button type="button" data-panel="recommend" aria-pressed="true" aria-controls="recommend">01 · Encuentra tu perfume</button>
+      <button type="button" data-panel="compare" aria-pressed="false" aria-controls="compare">02 · Compara por presupuesto</button>
+      <button type="button" data-panel="chat" aria-pressed="false" aria-controls="chat">03 · Conversa con tu asesor</button>
+    </nav>
+    <section id="recommend" class="panel">
+      <div class="section-heading"><div><span class="eyebrow">HECHO A TU MEDIDA</span><h2>Cuéntanos un poco de ti</h2></div><p>Las sugerencias exploran todos los perfumes del dataset, incluso los que aún no están en la tienda.</p></div>
+      <form id="recommend-form" class="profile-form">
+        <label>Edad<input name="age" type="number" value="25" min="1" max="120" required></label>
+        <label>Clima<select name="climate" id="climate" required></select></label>
+        <label>Ocasión<select name="occasion" id="occasion" required></select></label>
+        <label>Género de la fragancia<select name="gender" id="gender" required></select></label>
+        <label>Presupuesto en CLP<input name="budget_clp" type="number" min="1" max="100000000" step="1" value="100000" required></label>
+        <button class="primary" type="submit">Descubrir mis perfumes <span aria-hidden="true">↗</span></button>
+      </form>
+      <p id="recommend-message" role="status" class="feedback">Completa tu perfil para descubrir tres sugerencias.</p>
+      <div id="recommend-results" class="results" aria-label="Perfumes recomendados"></div>
+      <p class="fineprint">El puntaje expresa cómo ordena el modelo las sugerencias; no garantiza que el aroma te guste. La presentación de los precios del dataset no está especificada.</p>
+    </section>
+    <section id="compare" class="panel" hidden>
+      <div class="section-heading"><div><span class="eyebrow">ELIGE CON CALMA</span><h2>Un aroma para tu presupuesto</h2></div><p>Compara alternativas del dataset por su precio referencial, de menor a mayor.</p></div>
+      <form id="compare-form" class="compare-form">
+        <label>Buscar perfume<input name="query" type="search" maxlength="120" placeholder="Por ejemplo, Sauvage"></label>
+        <label>Presupuesto máximo en CLP<input name="budget_clp" type="number" min="1" max="100000000" step="1" value="100000" required></label>
+        <button class="primary" type="submit">Comparar alternativas</button>
+      </form>
+      <p id="compare-message" role="status" class="feedback">Encuentra opciones sin exceder tu presupuesto.</p>
+      <div class="table-scroll"><table id="compare-table" hidden><caption>Precios referenciales del dataset</caption><thead><tr><th>Perfume</th><th>Precio en CLP</th><th>Saldo del presupuesto</th></tr></thead><tbody id="compare-results"></tbody></table></div>
+    </section>
+    <section id="chat" class="panel" hidden>
+      <div class="section-heading"><div><span class="eyebrow">ESTAMOS PARA AYUDARTE</span><h2>Conversa con tu asesor</h2></div><p>Asistente local que consulta información del proyecto y del dataset. Sin servicios de IA externos.</p></div>
+      <div id="chat-log" class="chat-log" role="log" aria-live="polite" aria-label="Conversación con el asesor"><article class="bubble assistant"><strong>Asesor UPerfumes</strong><p>¡Hola! Pregúntame por un perfume, su precio referencial o cómo funciona el recomendador.</p></article></div>
+      <div class="suggestions"><button type="button" data-question="¿Cuánto cuesta Sauvage EDP?">Precio de Sauvage EDP</button><button type="button" data-question="¿Cómo funciona el recomendador?">Cómo elegir un perfume</button><button type="button" data-question="¿Qué métodos de pago hay?">Métodos de pago</button></div>
+      <form id="chat-form" class="chat-form"><label class="sr-only" for="chat-message">Tu mensaje</label><input id="chat-message" name="message" maxlength="1000" placeholder="Escribe tu pregunta…" autocomplete="off" required><button class="primary" type="submit">Enviar</button></form>
+      <p id="chat-feedback" class="feedback" role="status"></p>
+      <p class="fineprint">El asistente recupera respuestas conocidas; no es un modelo generativo. No compartas datos personales ni información de pago.</p>
+    </section>
+  </main>
+  <footer><span class="brand">U<span>PERFUMES</span></span><p>Elige una fragancia que cuente tu historia.</p></footer>
+</body>
+</html>

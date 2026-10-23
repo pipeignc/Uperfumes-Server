@@ -1,5 +1,16 @@
 # UPerfumes — servidor
 
+## Funcionalidades Python para la evaluación
+
+Recomendador Random Forest (imperativo), chatbot local sin claves (orientado a
+objetos) y comparador por presupuesto en CLP (funcional). Incluyen una pantalla
+propia y un adaptador para Express. Consulta
+[instalación, paradigmas, pruebas e integración](docs/FUNCIONALIDADES_PYTHON.md).
+
+Inicio rápido: `bash scripts/setup-python.sh` y luego `npm run python:dev`.
+El código original de la tienda (`src/` y `public/`) aún falta en esta rama;
+la conexión con su interfaz está pendiente de esos archivos.
+
 Backend en Node.js + Express para UPerfumes. Guarda los pedidos en una base
 de datos SQLite y procesa los pagos con tarjeta mediante **Webpay Plus**
 (Transbank), usando su SDK oficial. También sirve el sitio (carpeta
